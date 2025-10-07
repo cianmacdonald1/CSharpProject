@@ -1,0 +1,130 @@
+<Window x:Class="GalacticCommander.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:views="clr-namespace:GalacticCommander.Views"
+        xmlns:vm="clr-namespace:GalacticCommander.ViewModels"
+        mc:Ignorable="d"
+        Title="{Binding Title}" 
+        Height="800" 
+        Width="1200"
+        Background="{StaticResource SpaceBrush}"
+        WindowState="Maximized"
+        WindowStyle="None">
+
+    <!-- Data Templates for View Switching -->
+    <Window.Resources>
+        <DataTemplate DataType="{x:Type vm:GameViewModel}">
+            <views:GameView />
+        </DataTemplate>
+        
+        <DataTemplate DataType="{x:Type vm:MenuViewModel}">
+            <views:MenuView />
+        </DataTemplate>
+    </Window.Resources>
+
+    <!-- Main Content Area with View Switching -->
+    <Grid>
+        <!-- Background Stars Effect -->
+        <Canvas x:Name="StarField" Background="{StaticResource SpaceBrush}">
+            <!-- Stars will be generated programmatically -->
+        </Canvas>
+        
+        <!-- Current View Content -->
+        <ContentPresenter Content="{Binding CurrentViewModel}" 
+                         HorizontalAlignment="Stretch" 
+                         VerticalAlignment="Stretch"/>
+        
+        <!-- Debug Information (only in debug builds) -->
+        <StackPanel Orientation="Horizontal" 
+                   HorizontalAlignment="Right" 
+                   VerticalAlignment="Bottom" 
+                   Margin="10"
+                   Background="#80000000">
+            <TextBlock Text="FPS: " Foreground="White" FontSize="12"/>
+            <TextBlock Text="{Binding CurrentViewModel.FrameRate, StringFormat=F1}" 
+                      Foreground="White" FontSize="12" Margin="0,0,10,0"/>
+            <TextBlock Text="Entities: " Foreground="White" FontSize="12"/>
+            <TextBlock Text="{Binding CurrentViewModel.GameEntities.Count}" 
+                      Foreground="White" FontSize="12" Margin="0,0,10,0"/>
+            <TextBlock Text="Particles: " Foreground="White" FontSize="12"/>
+            <TextBlock Text="{Binding CurrentViewModel.Particles.Count}" 
+                      Foreground="White" FontSize="12"/>
+        </StackPanel>
+        
+        <!-- Game Status Overlay -->
+        <Grid x:Name="StatusOverlay" 
+              Background="#80000000" 
+              Visibility="{Binding IsGameRunning, Converter={StaticResource BoolToVisConverter}}"
+              VerticalAlignment="Top"
+              HorizontalAlignment="Left"
+              Margin="20">
+            
+            <StackPanel Orientation="Vertical" Margin="10">
+                <TextBlock Text="{Binding CurrentViewModel.GameStatus}" 
+                          Foreground="White" 
+                          FontSize="16" 
+                          FontWeight="Bold"/>
+                
+                <StackPanel Orientation="Horizontal" Margin="0,5,0,0">
+                    <TextBlock Text="Score: " Foreground="White" FontSize="14"/>
+                    <TextBlock Text="{Binding CurrentViewModel.CurrentScore}" 
+                              Foreground="Yellow" FontSize="14" FontWeight="Bold"/>
+                </StackPanel>
+                
+                <StackPanel Orientation="Horizontal">
+                    <TextBlock Text="High Score: " Foreground="White" FontSize="12"/>
+                    <TextBlock Text="{Binding CurrentViewModel.HighScore}" 
+                              Foreground="Orange" FontSize="12"/>
+                </StackPanel>
+                
+                <StackPanel Orientation="Horizontal" Margin="0,5,0,0">
+                    <TextBlock Text="Lives: " Foreground="White" FontSize="14"/>
+                    <TextBlock Text="{Binding CurrentViewModel.Lives}" 
+                              Foreground="Red" FontSize="14" FontWeight="Bold"/>
+                </StackPanel>
+                
+                <StackPanel Orientation="Horizontal">
+                    <TextBlock Text="Time: " Foreground="White" FontSize="12"/>
+                    <TextBlock Text="{Binding CurrentViewModel.PlayTime, StringFormat=mm\\:ss}" 
+                              Foreground="Cyan" FontSize="12"/>
+                </StackPanel>
+            </StackPanel>
+        </Grid>
+        
+        <!-- Health and Shield Bars -->
+        <StackPanel Orientation="Vertical" 
+                   VerticalAlignment="Bottom" 
+                   HorizontalAlignment="Left" 
+                   Margin="20"
+                   Visibility="{Binding IsGameRunning, Converter={StaticResource BoolToVisConverter}}">
+            
+            <!-- Health Bar -->
+            <Grid Height="20" Width="200" Margin="0,0,0,5">
+                <Border Background="#40FF0000" CornerRadius="2"/>
+                <Rectangle Fill="Red" 
+                          Width="{Binding CurrentViewModel.PlayerHealth, Converter={StaticResource HealthToWidthConverter}}"
+                          HorizontalAlignment="Left"/>
+                <TextBlock Text="HEALTH" 
+                          Foreground="White" 
+                          FontSize="10" 
+                          HorizontalAlignment="Center" 
+                          VerticalAlignment="Center"/>
+            </Grid>
+            
+            <!-- Shield Bar -->
+            <Grid Height="15" Width="200">
+                <Border Background="#400000FF" CornerRadius="2"/>
+                <Rectangle Fill="Blue" 
+                          Width="{Binding CurrentViewModel.PlayerShield, Converter={StaticResource ShieldToWidthConverter}}"
+                          HorizontalAlignment="Left"/>
+                <TextBlock Text="SHIELD" 
+                          Foreground="White" 
+                          FontSize="8" 
+                          HorizontalAlignment="Center" 
+                          VerticalAlignment="Center"/>
+            </Grid>
+        </StackPanel>
+    </Grid>
+</Window>

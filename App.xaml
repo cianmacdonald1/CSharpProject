@@ -1,0 +1,27 @@
+<Application x:Class="GalacticCommander.App"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             DispatcherUnhandledException="Application_DispatcherUnhandledException">
+    <Application.Resources>
+        <!-- Global Styles and Resources -->
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="Styles/GameStyles.xaml"/>
+                <ResourceDictionary Source="Styles/Animations.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+            
+            <!-- Converters -->
+            <BooleanToVisibilityConverter x:Key="BoolToVisConverter"/>
+            <converters:HealthToWidthConverter x:Key="HealthToWidthConverter" xmlns:converters="clr-namespace:GalacticCommander.Converters"/>
+            <converters:ShieldToWidthConverter x:Key="ShieldToWidthConverter"/>
+            <converters:GameOverToVisibilityConverter x:Key="GameOverToVisibilityConverter"/>
+            <converters:LoadingToVisibilityConverter x:Key="LoadingToVisibilityConverter"/>
+            
+            <!-- Brushes -->
+            <SolidColorBrush x:Key="SpaceBrush" Color="#0F0F23"/>
+            <SolidColorBrush x:Key="StarBrush" Color="#FFFFFF"/>
+            <SolidColorBrush x:Key="PlayerBrush" Color="#00FF00"/>
+            <SolidColorBrush x:Key="EnemyBrush" Color="#FF0000"/>
+        </ResourceDictionary>
+    </Application.Resources>
+</Application>

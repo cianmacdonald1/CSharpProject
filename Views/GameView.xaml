@@ -1,0 +1,131 @@
+<UserControl x:Class="GalacticCommander.Views.GameView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             mc:Ignorable="d" 
+             d:DesignHeight="800" d:DesignWidth="1200">
+    
+    <Grid>
+        <!-- Star field background -->
+        <Canvas x:Name="StarFieldCanvas" 
+                Background="{StaticResource SpaceBrush}"
+                ClipToBounds="True">
+        </Canvas>
+        
+        <!-- Game content canvas -->
+        <Canvas x:Name="GameCanvas" 
+                Background="Transparent"
+                ClipToBounds="True">
+        </Canvas>
+        
+        <!-- UI Overlay for game controls -->
+        <Grid x:Name="UIOverlay" Background="Transparent">
+            
+            <!-- Pause Menu Overlay -->
+            <Border Background="#CC000000" 
+                    Visibility="{Binding IsPaused, Converter={StaticResource BoolToVisConverter}}"
+                    HorizontalAlignment="Center"
+                    VerticalAlignment="Center">
+                
+                <StackPanel Orientation="Vertical" 
+                           Margin="50"
+                           HorizontalAlignment="Center">
+                    
+                    <TextBlock Text="GAME PAUSED" 
+                              FontSize="36" 
+                              Foreground="White" 
+                              HorizontalAlignment="Center"
+                              Margin="0,0,0,30"/>
+                    
+                    <Button Content="Resume (P)" 
+                           Command="{Binding TogglePauseCommand}"
+                           Style="{StaticResource GameButtonStyle}"
+                           Margin="0,5"/>
+                    
+                    <Button Content="Main Menu (ESC)" 
+                           Command="{Binding NavigateToMenuCommand}"
+                           Style="{StaticResource GameButtonStyle}"
+                           Margin="0,5"/>
+                    
+                    <TextBlock Text="CONTROLS:" 
+                              FontSize="16" 
+                              Foreground="Cyan" 
+                              HorizontalAlignment="Center"
+                              Margin="0,20,0,10"/>
+                    
+                    <TextBlock FontSize="12" Foreground="White" HorizontalAlignment="Center">
+                        <Run Text="WASD - Move Ship"/>
+                        <LineBreak/>
+                        <Run Text="Mouse - Aim"/>
+                        <LineBreak/>
+                        <Run Text="Space - Fire"/>
+                        <LineBreak/>
+                        <Run Text="P - Pause"/>
+                    </TextBlock>
+                </StackPanel>
+            </Border>
+            
+            <!-- Game Over Overlay -->
+            <Border Background="#CC000000" 
+                    Visibility="{Binding GameStatus, Converter={StaticResource GameOverToVisibilityConverter}}"
+                    HorizontalAlignment="Center"
+                    VerticalAlignment="Center">
+                
+                <StackPanel Orientation="Vertical" 
+                           Margin="50"
+                           HorizontalAlignment="Center">
+                    
+                    <TextBlock Text="GAME OVER" 
+                              FontSize="48" 
+                              Foreground="Red" 
+                              HorizontalAlignment="Center"
+                              Margin="0,0,0,20"/>
+                    
+                    <TextBlock FontSize="24" Foreground="Yellow" HorizontalAlignment="Center">
+                        <Run Text="Final Score: "/>
+                        <Run Text="{Binding CurrentScore}" FontWeight="Bold"/>
+                    </TextBlock>
+                    
+                    <TextBlock FontSize="16" Foreground="Orange" HorizontalAlignment="Center" Margin="0,5,0,30">
+                        <Run Text="High Score: "/>
+                        <Run Text="{Binding HighScore}" FontWeight="Bold"/>
+                    </TextBlock>
+                    
+                    <Button Content="New Game" 
+                           Command="{Binding StartNewGameCommand}"
+                           Style="{StaticResource GameButtonStyle}"
+                           Margin="0,5"/>
+                    
+                    <Button Content="Main Menu" 
+                           Command="{Binding NavigateToMenuCommand}"
+                           Style="{StaticResource GameButtonStyle}"
+                           Margin="0,5"/>
+                </StackPanel>
+            </Border>
+            
+            <!-- Loading Overlay -->
+            <Border Background="#AA000000" 
+                    Visibility="{Binding GameStatus, Converter={StaticResource LoadingToVisibilityConverter}}"
+                    HorizontalAlignment="Center"
+                    VerticalAlignment="Center">
+                
+                <StackPanel Orientation="Vertical" 
+                           Margin="30"
+                           HorizontalAlignment="Center">
+                    
+                    <TextBlock Text="LOADING..." 
+                              FontSize="24" 
+                              Foreground="Cyan" 
+                              HorizontalAlignment="Center"/>
+                    
+                    <ProgressBar IsIndeterminate="True" 
+                               Width="200" 
+                               Height="20" 
+                               Margin="0,10,0,0"/>
+                </StackPanel>
+            </Border>
+            
+        </Grid>
+    </Grid>
+</UserControl>
