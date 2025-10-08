@@ -89,8 +89,16 @@ namespace GalacticCommander
         
         private void StartGame(object sender, RoutedEventArgs e)
         {
-            // Replace content with the actual game
-            Content = new CodeBasedGameView();
+            try
+            {
+                // Replace content with the enhanced game
+                Content = new EnhancedGameView();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Error starting game: {ex.Message}\n\nStack Trace:\n{ex.StackTrace}", 
+                    "Game Error", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
         }
         
         private void ShowConcepts(object sender, RoutedEventArgs e)

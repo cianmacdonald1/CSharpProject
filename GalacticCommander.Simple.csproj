@@ -6,8 +6,9 @@
     <UseWPF>true</UseWPF>
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
-    <AssemblyTitle>Galactic Commander Simple</AssemblyTitle>
+    <AssemblyTitle>Galactic Commander Enhanced</AssemblyTitle>
     <StartupObject>GalacticCommander.SimpleApp</StartupObject>
+    <EnableDefaultItems>false</EnableDefaultItems>
   </PropertyGroup>
 
   <ItemGroup>
@@ -19,11 +20,19 @@
     <PackageReference Include="CommunityToolkit.Mvvm" Version="8.2.2" />
   </ItemGroup>
   
-  <!-- Exclude XAML files that are causing issues -->
+  <!-- Include only the files we want -->
   <ItemGroup>
-    <None Remove="*.xaml" />
-    <None Remove="Views\*.xaml" />
-    <None Remove="Styles\*.xaml" />
+    <Compile Include="SimpleProgram.cs" />
+    <Compile Include="SimpleMainWindow.cs" />
+    <Compile Include="Models\GameModels.cs" />
+    <Compile Include="Models\Components.cs" />
+    <Compile Include="Models\EntityManager.cs" />
+    <Compile Include="Models\GameEntities.cs" />
+    <Compile Include="Services\GameEngine.cs" />
+    <Compile Include="Services\InputServices.cs" />
+    <Compile Include="Services\SerializationService.cs" />
+    <Compile Include="Views\EnhancedGameView.cs" />
+    <Compile Include="Views\SpaceshipControl.cs" />
   </ItemGroup>
 
 </Project>

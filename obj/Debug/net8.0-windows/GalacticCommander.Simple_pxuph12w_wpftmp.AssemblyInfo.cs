@@ -10,12 +10,12 @@
 using System;
 using System.Reflection;
 
-[assembly: System.Reflection.AssemblyCompanyAttribute("GalacticCommander")]
+[assembly: System.Reflection.AssemblyCompanyAttribute("GalacticCommander.Simple")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
 [assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+68331e2e29a4cd295632b83b5b6f412f691bbfce")]
-[assembly: System.Reflection.AssemblyProductAttribute("GalacticCommander")]
-[assembly: System.Reflection.AssemblyTitleAttribute("Galactic Commander")]
+[assembly: System.Reflection.AssemblyProductAttribute("GalacticCommander.Simple")]
+[assembly: System.Reflection.AssemblyTitleAttribute("Galactic Commander Simple")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
 [assembly: System.Runtime.Versioning.TargetPlatformAttribute("Windows7.0")]
 [assembly: System.Runtime.Versioning.SupportedOSPlatformAttribute("Windows7.0")]

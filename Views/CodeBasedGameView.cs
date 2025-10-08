@@ -8,6 +8,7 @@ using System.Windows.Threading;
 using System.Windows.Input;
 using GalacticCommander.Models;
 using GalacticCommander.Services;
+using System.Linq;
 
 namespace GalacticCommander.Views
 {
