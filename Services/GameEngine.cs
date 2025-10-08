@@ -43,7 +43,6 @@ namespace GalacticCommander.Services
         
         // Performance monitoring
         private readonly Queue<float> _frameTimeHistory = new(60);
-        private float _accumulatedTime;
         private int _frameCount;
         private DateTime _lastFpsUpdate = DateTime.Now;
         

@@ -121,16 +121,16 @@ namespace GalacticCommander.Views
             };
 
             // Apply transform
-            var transform = new CompositeTransform
-            {
-                TranslateX = entity.Position.X - entity.Size.X / 2,
-                TranslateY = entity.Position.Y - entity.Size.Y / 2,
-                Rotation = entity.Rotation * 180 / Math.PI, // Convert radians to degrees
-                CenterX = entity.Size.X / 2,
-                CenterY = entity.Size.Y / 2
-            };
+            var transformGroup = new TransformGroup();
+            transformGroup.Children.Add(new TranslateTransform(
+                entity.Position.X - entity.Size.X / 2,
+                entity.Position.Y - entity.Size.Y / 2));
+            transformGroup.Children.Add(new RotateTransform(
+                entity.Rotation * 180 / Math.PI,
+                entity.Size.X / 2,
+                entity.Size.Y / 2));
 
-            rectangle.RenderTransform = transform;
+            rectangle.RenderTransform = transformGroup;
 
             // Add glow effect for certain entities
             if (entity.Color == Colors.Cyan) // Player

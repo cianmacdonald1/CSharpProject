@@ -1885,9 +1885,9 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\summe\\Desktop\\Work\\Coding\\CSharpProject\\GalacticCommander.csproj",
-      "projectName": "GalacticCommander",
-      "projectPath": "C:\\Users\\summe\\Desktop\\Work\\Coding\\CSharpProject\\GalacticCommander.csproj",
+      "projectUniqueName": "C:\\Users\\summe\\Desktop\\Work\\Coding\\CSharpProject\\GalacticCommander.Simple.csproj",
+      "projectName": "GalacticCommander.Simple",
+      "projectPath": "C:\\Users\\summe\\Desktop\\Work\\Coding\\CSharpProject\\GalacticCommander.Simple.csproj",
       "packagesPath": "C:\\Users\\summe\\.nuget\\packages\\",
       "outputPath": "C:\\Users\\summe\\Desktop\\Work\\Coding\\CSharpProject\\obj\\",
       "projectStyle": "PackageReference",

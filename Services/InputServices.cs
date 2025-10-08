@@ -18,6 +18,9 @@ namespace GalacticCommander.Services
         
         void RegisterCommand(Key key, ICommand command);
         void UnregisterCommand(Key key);
+        void UpdateKeyState(Key key, bool isPressed);
+        void UpdateMousePosition(Vector2 position);
+        void UpdateMouseButtonState(System.Windows.Input.MouseButton button, bool isPressed);
         
         event Action<Key>? OnKeyPressed;
         event Action<Key>? OnKeyReleased;

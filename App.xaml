@@ -1,6 +1,7 @@
 <Application x:Class="GalacticCommander.App"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:converters="clr-namespace:GalacticCommander.Converters"
              DispatcherUnhandledException="Application_DispatcherUnhandledException">
     <Application.Resources>
         <!-- Global Styles and Resources -->
@@ -12,7 +13,7 @@
             
             <!-- Converters -->
             <BooleanToVisibilityConverter x:Key="BoolToVisConverter"/>
-            <converters:HealthToWidthConverter x:Key="HealthToWidthConverter" xmlns:converters="clr-namespace:GalacticCommander.Converters"/>
+            <converters:HealthToWidthConverter x:Key="HealthToWidthConverter"/>
             <converters:ShieldToWidthConverter x:Key="ShieldToWidthConverter"/>
             <converters:GameOverToVisibilityConverter x:Key="GameOverToVisibilityConverter"/>
             <converters:LoadingToVisibilityConverter x:Key="LoadingToVisibilityConverter"/>

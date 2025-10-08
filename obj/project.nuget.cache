@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "Ca0UEt8mV1A=",
+  "dgSpecHash": "E7XGhtU1Wpc=",
   "success": true,
-  "projectFilePath": "C:\\Users\\summe\\Desktop\\Work\\Coding\\CSharpProject\\GalacticCommander.csproj",
+  "projectFilePath": "C:\\Users\\summe\\Desktop\\Work\\Coding\\CSharpProject\\GalacticCommander.Simple.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\summe\\.nuget\\packages\\communitytoolkit.mvvm\\8.2.2\\communitytoolkit.mvvm.8.2.2.nupkg.sha512",
     "C:\\Users\\summe\\.nuget\\packages\\microsoft.extensions.configuration\\8.0.0\\microsoft.extensions.configuration.8.0.0.nupkg.sha512",
